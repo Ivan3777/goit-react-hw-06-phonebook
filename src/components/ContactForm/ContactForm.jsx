@@ -2,10 +2,14 @@ import propTypes from 'prop-types';
 import React from 'react';
 import { useState } from 'react';
 import css from './ContactForm.module.css';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/contactsSlice';
 
-export const ContactForm = ({handleSubmit}) => {
+export const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  const dispatch = useDispatch();
 
   const handleChange = e => {
     const { name, value } = e.target;
@@ -23,10 +27,10 @@ export const ContactForm = ({handleSubmit}) => {
   };
 
   const handleFormSubmit = e => {
-    const form = e.currentTarget;
-    handleSubmit({ name: name, number: number });
-    form.reset();
     e.preventDefault();
+    const form = e.currentTarget;
+  dispatch(addContact(name, number))
+    form.reset();
   };
 
   return (
