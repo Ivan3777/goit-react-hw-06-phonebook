@@ -1,7 +1,6 @@
-import propTypes from 'prop-types';
-import css from './Filter.module.css';
 import { setFilter } from 'redux/contactsSlice';
 import { useDispatch } from 'react-redux';
+import css from './Filter.module.css';
 
 export const Filter = () => {
   const dispatch = useDispatch();
@@ -25,7 +24,3 @@ export const Filter = () => {
   );
 };
 
-Filter.propTypes = {
-  filter: propTypes.string.isRequired,
-  handleChange: propTypes.func.isRequired,
-};
